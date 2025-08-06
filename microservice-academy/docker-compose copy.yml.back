@@ -1,0 +1,91 @@
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"
+    networks:
+      - academy-network
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+    depends_on:
+      - zookeeper
+    networks:
+      - academy-network
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+    networks:
+      - academy-network
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - academy-network
+  splunk:
+    image: splunk/splunk:latest
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=admin123
+      - SPLUNK_GENERAL_TERMS=--accept-sgt-current-at-splunk-com
+    ports:
+      - "8000:8000"
+      - "9997:9997"
+    networks:
+      - academy-network
+  eureka-server:
+    image: academy/eureka-server
+    build:
+      context: ./eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - academy-network
+  config-server:
+    image: academy/config-server
+    build:
+      context: ./config-server
+    ports:
+      - "8888:8888"
+    networks:
+      - academy-network
+  student-service:
+    image: academy/student-service
+    build:
+      context: ./student-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - sqlserver
+      - kafka
+      - redis
+      - eureka-server
+      - config-server
+    networks:
+      - academy-network
+  course-service:
+    image: academy/course-service
+    build:
+      context: ./course-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - sqlserver
+      - kafka
+      - redis
+      - eureka-server
+      - config-server
+    networks:
+      - academy-network
+networks:
+  academy-network:
+    driver: bridge
