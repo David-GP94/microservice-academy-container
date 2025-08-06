@@ -20,16 +20,8 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>microservice-academy-service</module>
-    <module>microservice-academy-client</module>
-    <module>microservice-academy-eureka-server</module>
-    <module>microservice-academy-api-gateway</module>
-    <module>microservice-academy-zuul-api-gateway</module>
-    <module>microservice-academy-config-server</module>
-    <module>microservice-academy-discovery-server</module>
-    <module>microservice-academy-hystrix-dashboard</module>
-    <module>microservice-academy-turbine-server</module>
-    <module>microservice-academy-admin-server</module>
+    <module>microservice-academy-students</module>
+    
   </modules>
 
   <properties>
