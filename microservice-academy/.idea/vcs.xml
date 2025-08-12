@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microservice-academy-api-gateway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microservice-academy-auth-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microservice-academy-config-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microservice-academy-courses" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microservice-academy-eureka-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microservice-academy-students" vcs="Git" />
+  </component>
+</project>

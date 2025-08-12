@@ -21,6 +21,11 @@
 
   <modules>
     <module>microservice-academy-students</module>
+    <module>microservice-academy-courses</module>
+    <module>microservice-academy-config-server</module>
+    <module>microservice-academy-eureka-server</module>
+    <module>microservice-academy-api-gateway</module>
+    <module>microservice-academy-auth-service</module>
     
   </modules>
 
